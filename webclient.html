@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management Dashboard</title>
+    <link rel="stylesheet" href="webclient.css">
+</head>
+<body data-page="dashboard">
+    <main class="page">
+        <header class="page-header">
+            <h1>Student Management Dashboard</h1>
+        </header>
+
+        <div id="statusBox" class="status hidden" role="status" aria-live="polite"></div>
+
+        <section id="dashboardSection">
+            <!-- Session summary and quick actions for the active user. -->
+            <section class="panel toolbar">
+                <div>
+                    <strong id="sessionName">Not logged in</strong>
+                    <div id="sessionMeta" class="muted"></div>
+                </div>
+                <button id="logoutButton" type="button">Logout</button>
+            </section>
+
+            <section class="panel">
+                <div class="section-header">
+                    <h2>Courses</h2>
+                    <button id="refreshCoursesButton" type="button">Refresh</button>
+                </div>
+                <div id="courseList" class="output empty">No courses to display.</div>
+            </section>
+
+            <!-- Teacher-only controls are shown after login based on session.role. -->
+            <section id="teacherSection" class="hidden">
+                <section class="panel">
+                    <h2>Teacher Actions</h2>
+
+                    <div class="button-row action-switcher">
+                        <button id="showCreateCourseButton" type="button" onclick="window.webClientShowTeacherPanel && window.webClientShowTeacherPanel('create')">Create Course</button>
+                        <button id="showViewCourseButton" type="button" onclick="window.webClientShowTeacherPanel && window.webClientShowTeacherPanel('view')">View Course</button>
+                    </div>
+
+                    <form id="createCourseForm" class="form-card hidden top-spaced">
+                        <label>
+                            Course Code
+                            <input type="text" name="course_code">
+                        </label>
+
+                        <label>
+                            Course Name
+                            <input type="text" name="course_name">
+                        </label>
+
+                        <button type="submit">Save Course</button>
+                    </form>
+
+                    <form id="teacherViewForm" class="form-card hidden top-spaced">
+                        <label>
+                            Course Code
+                            <input type="text" name="course_id" placeholder="e.g. IT-101">
+                        </label>
+
+                        <label>
+                            Action
+                            <select id="teacherViewAction" name="view_action">
+                                <option value="view_course">View Course Details</option>
+                                <option value="list_students">View All Students</option>
+                                <option value="search_student">Search Specific Student</option>
+                                <option value="remove_student">Delete Student</option>
+                            </select>
+                        </label>
+
+                        <label id="teacherStudentIdLabel" class="hidden">
+                            Student ID
+                            <input type="text" name="student_id">
+                        </label>
+
+                        <button id="teacherViewSubmitButton" type="submit">Submit</button>
+                    </form>
+                </section>
+            </section>
+
+            <!-- Student-only controls are shown after login based on session.role. -->
+            <section id="studentSection" class="hidden">
+                <section class="panel">
+                    <h2>Student Actions</h2>
+
+                    <div class="button-row action-switcher">
+                        <button id="showEnrollButton" type="button" onclick="window.webClientShowStudentPanel && window.webClientShowStudentPanel('enroll')">Enroll Course</button>
+                        <button id="showStudentCourseButton" type="button" onclick="window.webClientShowStudentPanel && window.webClientShowStudentPanel('course')">Course Actions</button>
+                        <button id="showStudentClassmateButton" type="button" onclick="window.webClientShowStudentPanel && window.webClientShowStudentPanel('classmate')">Search Classmate</button>
+                    </div>
+
+                    <form id="enrollForm" class="form-card hidden top-spaced">
+                        <h2>Enroll To Course</h2>
+
+                        <label>
+                            Course Key / Password
+                            <input type="text" name="course_key" required>
+                        </label>
+
+                        <button type="submit">Enroll</button>
+                    </form>
+
+                    <form id="studentCourseForm" class="form-card hidden top-spaced">
+                        <h2>Course Actions</h2>
+
+                        <label>
+                            Course Code
+                            <input type="text" name="course_id" placeholder="e.g. IT-101" required>
+                        </label>
+
+                        <div class="button-row">
+                            <button id="studentViewCourseButton" type="button">View Course</button>
+                            <button id="studentListClassmatesButton" type="button">View Classmates</button>
+                            <button id="studentUnenrollButton" type="button">Unenroll</button>
+                        </div>
+                    </form>
+
+                    <form id="studentClassmateForm" class="form-card hidden top-spaced">
+                        <h2>Classmate Search</h2>
+
+                        <label>
+                            Course Code
+                            <input type="text" name="course_id" placeholder="e.g. IT-101" required>
+                        </label>
+
+                        <label>
+                            Classmate ID
+                            <input type="text" name="classmate_id" required>
+                        </label>
+
+                        <button id="studentSearchClassmateButton" type="button">Search Classmate</button>
+                    </form>
+                </section>
+            </section>
+
+            <section class="panel">
+                <h2>Response</h2>
+                <!-- JavaScript renders the latest API response details. -->
+                <div id="responseBox" class="output empty">No response yet.</div>
+            </section>
+        </section>
+
+        <noscript>
+            <section class="panel">
+                <p>JavaScript is required. Use <a href="login.html">login.html</a> to start after enabling it.</p>
+            </section>
+        </noscript>
+    </main>
+
+    <script src="webclient.js"></script>
+</body>
+</html>

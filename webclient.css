@@ -1,0 +1,199 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    color: #222;
+}
+
+.page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+.page-narrow {
+    max-width: 520px;
+}
+
+.page-header {
+    margin-bottom: 16px;
+}
+
+.page-header h1 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+.page-header p {
+    margin: 0;
+    color: #555;
+}
+
+/* Shared card and grid containers used across the dashboard pages. */
+.panel {
+    background: #fff;
+    border: 1px solid #d7d7d7;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.panel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.form-card h2,
+.panel h2 {
+    margin: 0;
+    font-size: 18px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+}
+
+input,
+select,
+button {
+    font: inherit;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    background: #fff;
+}
+
+button {
+    padding: 10px 12px;
+    border: 1px solid #333;
+    background: #333;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #444;
+}
+
+.button-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.action-switcher {
+    margin-top: 12px;
+}
+
+.top-spaced {
+    margin-top: 16px;
+}
+
+.button-muted {
+    background: #777;
+    border-color: #777;
+}
+
+.button-muted:hover {
+    background: #888;
+}
+
+.toolbar,
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.muted {
+    color: #666;
+    font-size: 14px;
+}
+
+.status {
+    border: 1px solid #bbb;
+    background: #fff;
+    padding: 12px;
+    margin-bottom: 16px;
+}
+
+.status.success {
+    border-color: #6aa86a;
+    background: #eef8ee;
+}
+
+.status.error {
+    border-color: #c97878;
+    background: #fbefef;
+}
+
+.output {
+    min-height: 40px;
+}
+
+.output.empty {
+    color: #666;
+}
+
+.output-block {
+    margin-top: 12px;
+}
+
+.output-block:first-child {
+    margin-top: 0;
+}
+
+.output-block strong {
+    display: block;
+    margin-bottom: 6px;
+}
+
+.output-block ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Small auth links are reused by the login and registration screens. */
+.auth-link {
+    margin: 12px 0 0;
+    font-size: 14px;
+}
+
+.auth-link a {
+    color: #1f5faa;
+    text-decoration: none;
+}
+
+.auth-link a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    .toolbar,
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

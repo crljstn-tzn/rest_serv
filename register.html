@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Student Management</title>
+    <link rel="stylesheet" href="webclient.css">
+</head>
+<body data-page="register">
+    <main class="page page-narrow">
+        <header class="page-header">
+            <h1>Register</h1>
+            <p>Create a teacher or student account.</p>
+        </header>
+
+        <div id="statusBox" class="status hidden" role="status" aria-live="polite"></div>
+
+        <section class="panel">
+            <form id="registerForm" class="form-card">
+                <label>
+                    Role
+                    <select name="role" required>
+                        <option value="teacher">Teacher</option>
+                        <option value="student">Student</option>
+                    </select>
+                </label>
+
+                <label>
+                    Account ID
+                    <input type="text" name="account_id" required>
+                </label>
+
+                <label>
+                    Full Name
+                    <input type="text" name="full_name" required>
+                </label>
+
+                <label>
+                    Password
+                    <input type="password" name="password" required>
+                </label>
+
+                <button type="submit">Register</button>
+            </form>
+
+            <p class="auth-link">
+                Already registered? <a href="login.html">Go to login</a>.
+            </p>
+        </section>
+
+        <noscript>
+            <section class="panel">
+                <p>JavaScript is required for this page.</p>
+            </section>
+        </noscript>
+    </main>
+
+    <script src="webclient.js"></script>
+</body>
+</html>
